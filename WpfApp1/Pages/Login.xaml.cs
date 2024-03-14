@@ -48,8 +48,7 @@ namespace WpfApp1.Pages
                         Users.id = Convert.ToInt32(result.Rows[0]["id"]);
                         Users.user = result.Rows[0]["Login"].ToString();
                         Users.role = Convert.ToInt32(result.Rows[0]["role"]);
-                       
-                        mainWindow.frame.Navigate(new Pages.Main());
+                        mainWindow.frame.Navigate(new Pages.Main(mainWindow));
                     }
                     else MessageBox.Show("Неверное имя пользователя или пароль.");
                 }

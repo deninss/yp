@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Classes;
 
 namespace WpfApp1.Pages
 {
@@ -23,15 +25,28 @@ namespace WpfApp1.Pages
    
     public partial class Main : Page
     {
-        public Main()
+        MainWindow mainWindow;
+        public Main(MainWindow mainWindow)
         {
             InitializeComponent();
-            
+            this.mainWindow = mainWindow;
+            mainWindow.loadItem();
+            load();
+        }
+        public void load()
+        {  
+            pagesListBox.Items.Clear();
+            foreach (var page in mainWindow.applicationsItem)
+            {
+                ApplicationsItem pageControl = new ApplicationsItem();
+                pageControl.DataContext = page;
+                pagesListBox.Items.Add(pageControl);
+            }
         }
 
         private void OnAdd(object sender, RoutedEventArgs e)
         {   
-            AddApplicationsItem addApplicationsItem = new AddApplicationsItem();
+            AddApplicationsItem addApplicationsItem = new AddApplicationsItem(this,mainWindow);
             addApplicationsItem.ShowDialog();
         }
     }
