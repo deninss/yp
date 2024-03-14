@@ -40,14 +40,11 @@ namespace WpfApp1.Pages
                     try
                     {
                         ClassLibrary1.bd.Select($"insert into [User] (Login,Password,role) values ('{login.Text}','{password.Text}','{0}')");
+                        mainWindow.frame.Navigate(new Pages.Main());
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        mainWindow.frame.Navigate(new Pages.Main());
                     }
                 }
                 else MessageBox.Show("Пароли не совподают");

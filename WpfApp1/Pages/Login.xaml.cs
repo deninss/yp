@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,17 +40,14 @@ namespace WpfApp1.Pages
             {
                 try
                 {
-                    ClassLibrary1.bd.Select($"select * from [User] where Login='{login.Text}' and Password='{password.Text}'");
+                    DataTable result = ClassLibrary1.bd.Select($"SELECT * FROM [User] WHERE Login='{login.Text}' AND Password='{password.Text}'");
+                    if (result.Rows.Count > 0) mainWindow.frame.Navigate(new Pages.Main());
+                    else MessageBox.Show("Неверное имя пользователя или пароль.");
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally
-                {
-                    mainWindow.frame.Navigate(new Pages.Main());
-                }
-
             }
             else MessageBox.Show("Заполните все поля");
         }
