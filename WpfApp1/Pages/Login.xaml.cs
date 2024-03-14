@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Classes;
 
 namespace WpfApp1.Pages
 {
@@ -41,13 +43,20 @@ namespace WpfApp1.Pages
                 try
                 {
                     DataTable result = ClassLibrary1.bd.Select($"SELECT * FROM [User] WHERE Login='{login.Text}' AND Password='{password.Text}'");
-                    if (result.Rows.Count > 0) mainWindow.frame.Navigate(new Pages.Main());
+                    if (result.Rows.Count > 0)
+                    {
+                        Users.id = Convert.ToInt32(result.Rows[0]["id"]);
+                        Users.user = result.Rows[0]["Login"].ToString();
+                        Users.role = Convert.ToInt32(result.Rows[0]["role"]);
+                       
+                        mainWindow.frame.Navigate(new Pages.Main());
+                    }
                     else MessageBox.Show("Неверное имя пользователя или пароль.");
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
+                }   
             }
             else MessageBox.Show("Заполните все поля");
         }

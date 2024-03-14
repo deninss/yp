@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ApplicationsItem.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ApplicationsItem : UserControl
     {
-        public MainWindow()
+        public ApplicationsItem()
         {
             InitializeComponent();
-            this.frame.Navigate(new Pages.Login(this));
-        }
-        public void loadUser()
-        {
-
         }
     }
 }

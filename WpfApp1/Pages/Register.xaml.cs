@@ -40,7 +40,8 @@ namespace WpfApp1.Pages
                     try
                     {
                         ClassLibrary1.bd.Select($"insert into [User] (Login,Password,role) values ('{login.Text}','{password.Text}','{0}')");
-                        mainWindow.frame.Navigate(new Pages.Main());
+                        
+                        mainWindow.frame.Navigate(new Pages.Login(mainWindow));
                     }
                     catch (Exception ex)
                     {

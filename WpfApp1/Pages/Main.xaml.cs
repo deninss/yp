@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,11 +19,20 @@ namespace WpfApp1.Pages
     /// <summary>
     /// Логика взаимодействия для Main.xaml
     /// </summary>
+    /// 
+   
     public partial class Main : Page
     {
         public Main()
         {
             InitializeComponent();
+            
+        }
+
+        private void OnAdd(object sender, RoutedEventArgs e)
+        {   
+            AddApplicationsItem addApplicationsItem = new AddApplicationsItem();
+            addApplicationsItem.ShowDialog();
         }
     }
 }

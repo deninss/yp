@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApp1.Pages.AddApplicationsItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Pages"
+        mc:Ignorable="d"
+        Title="AddApplicationsItem" MaxHeight="320" MinHeight="320" MinWidth="280" MaxWidth="350">
+    <Grid>
+        <Label Width="260" Height="30" Content="Оборудование, которое требует ремонта" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="Equipment" Width="260" Height="30" Margin="0,45,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Width="260" Height="30" Content="Тип неисправности" Margin="0,80,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="TypeOfFault" Width="260" Height="30" Margin="0,115,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Width="260" Height="30" Content="Описание проблемы" Margin="0,147,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="DescriptionOfTheProblem" Width="260" Height="30" Margin="0,182,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Click="OnAddItem" Width="95" Height="30" Margin="40,226,0,0" Content="Добавить" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Click="OnClose" Height="30" Margin="0,226,40,0" Content="Закрыть" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+    </Grid>
+</Window>
