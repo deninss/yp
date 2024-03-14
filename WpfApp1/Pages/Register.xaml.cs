@@ -20,9 +20,39 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class Register : Page
     {
-        public Register()
+        MainWindow mainWindow;
+        public Register(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+        }
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.frame.Navigate(new Pages.Login(mainWindow));
+        }
+
+        private void OnRegin(object sender, RoutedEventArgs e)
+        {
+            if (login.Text.Length != 0 && password.Text.Length != 0 && password2.Text.Length != 0)
+            {
+                if (password.Text.Contains(password2.Text))
+                {
+                    try
+                    {
+                        ClassLibrary1.bd.Select($"insert into [User] (Login,Password,role) values ('{login.Text}','{password.Text}','{0}')");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        mainWindow.frame.Navigate(new Pages.Main());
+                    }
+                }
+                else MessageBox.Show("Пароли не совподают");
+            }
+            else MessageBox.Show("Заполните все поля");
         }
     }
 }

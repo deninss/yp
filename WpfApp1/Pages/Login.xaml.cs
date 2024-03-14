@@ -30,14 +30,26 @@ namespace WpfApp1.Pages
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.frame.Navigate(new Pages.Register());
+            mainWindow.frame.Navigate(new Pages.Register(mainWindow));
         }
 
         private void OnLogin(object sender, RoutedEventArgs e)
         {
             if (login.Text.Length != 0 && password.Text.Length != 0)
             {
-                
+                try
+                {
+                    ClassLibrary1.bd.Select($"select * from [User] where Login='{login.Text}' and Password='{password.Text}'");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    mainWindow.frame.Navigate(new Pages.Main());
+                }
+
             }
             else MessageBox.Show("Заполните все поля");
         }
